@@ -22,15 +22,14 @@
 			<i class="fa fa-bars"></i>
 			<span class="sr-only">Toggle navigation</span>
 			</button>
-			<a href="index.html" class="navbar-brand brand"> ChaoCarMa </a>
+			<a href="index.html" class="navbar-brand brand"> SCORILO </a>
 		</div>
 		<div id="navbar-collapse-02" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="propClone"><a href="index.html">Home</a></li>
 				<li class="propClone"><a href="shop.html">Shop</a></li>
-				<li class="propClone"><a href="About.html">About</a></li>
+				<li class="propClone"><a href="product.html">Product</a></li>
 				<li class="propClone"><a href="contact.html">Contact</a></li>
-				<li class="propClone"><a href="Login.html">Login / Register</a></li>
 			</ul>
 		</div>
 	</div>
@@ -40,7 +39,7 @@
 			<div class="col-md-12 text-center">
 				<div class="text-pageheader">
 					<div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.0s">
-						 Contact
+						 Admin
 					</div>
 				</div>
 			</div>
@@ -48,12 +47,13 @@
 	</div>
 </div>
 </header>
+
 <!-- CONTENT =============================-->
 <section class="item content">
 <div class="container toparea">
 	<div class="underlined-title">
 		<div class="editContent">
-			<h1 class="text-center latestitems">Contact Me</h1>
+			<h1 class="text-center latestitems">Edit Data</h1>
 		</div>
 		<div class="wow-hr type_short">
 			<span class="wow-hr-h">
@@ -63,38 +63,47 @@
 			</span>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2">
-			<div class="done">
-				<div class="alert alert-success">
-					<button type="button" class="close" data-dismiss="alert">×</button>
-					Your message has been sent. Thank you!
-				</div>
-			</div>
-			<form method="post" action="contact.php" id="contactform">
-				<div class="form">
-					<input type="text" name="name" placeholder="Your Name *">
-					<input type="text" name="email" placeholder="Your E-mail Address *">
-					<textarea name="comment" rows="7" placeholder="Type your Message *"></textarea>
-					<input type="submit" id="submit" class="clearfix btn" value="Send">
-				</div>
-			</form>
+	<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
+		
+		<div id="edd_checkout_form_wrap" class="edd_clearfix">
+			<form id="edd_purchase_form" class="edd_form" action="#" method="POST">
+				<fieldset id="edd_checkout_user_info">
+					<legend>Personal Info</legend>
+					<p id="edd-email-wrap">
+						<label class="edd-label" for="edd-email">
+						Email Address <span class="edd-required-indicator">*</span></label>
+						<input class="edd-input required" type="email" name="edd_email" placeholder="Email address" id="edd-email" value="">
+					</p>
+					<p id="edd-first-name-wrap">
+						<label class="edd-label" for="edd-first">
+						First Name <span class="edd-required-indicator">*</span>
+						</label>
+						<input class="edd-input required" type="text" name="edd_first" placeholder="First name" id="edd-first" value="" required="">
+					</p>
+					<p id="edd-last-name-wrap">
+						<label class="edd-label" for="edd-last">
+						Last Name </label>
+						<input class="edd-input" type="text" name="edd_last" id="edd-last" placeholder="Last name" value="">
+					</p>
+                    <input type="hidden" name="edd_action" value="purchase">
+					<input type="hidden" name="edd-gateway" value="manual">
+					<input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="Purchase">
+				</fieldset>
 		</div>
 	</div>
 </div>
-</div>
 </section>
+
 <!-- CALL TO ACTION =============================-->
 <section class="content-block" style="background-color:#00bba7;">
 <div class="container text-center">
-<div class="row">
-	<div class="col-sm-10 col-sm-offset-1">
-		<div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
-			<h1 class="callactiontitle"> Promote Items Area Give Discount to Buyers <span class="callactionbutton"><i class="fa fa-gift"></i> Promotion 20%</span>
-			</h1>
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
+				
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 </section>
 
@@ -102,6 +111,6 @@
 <script src="js/jquery-.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/anim.js"></script>
-<script src="js/validate.js"></script>
+
 </body>
 </html>

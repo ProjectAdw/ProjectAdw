@@ -28,7 +28,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="propClone"><a href="index.html">Home</a></li>
 				<li class="propClone"><a href="shop.html">Shop</a></li>
-				<li class="propClone"><a href="checkout.html">Checkout</a></li>
+				<li class="propClone"><a href="product.html">Product</a></li>
 				<li class="propClone"><a href="contact.html">Contact</a></li>
 			</ul>
 		</div>
@@ -39,7 +39,7 @@
 			<div class="col-md-12 text-center">
 				<div class="text-pageheader">
 					<div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.0s">
-						 Product Name
+						 Checkout
 					</div>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 <div class="container toparea">
 	<div class="underlined-title">
 		<div class="editContent">
-			<h1 class="text-center latestitems">Awesome Product</h1>
+			<h1 class="text-center latestitems">MAKE PAYMENT</h1>
 		</div>
 		<div class="wow-hr type_short">
 			<span class="wow-hr-h">
@@ -63,36 +63,89 @@
 			</span>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-8">
-			<div class="productbox">
-				<img src="images/product2-2.jpg" alt="">
-				<div class="clearfix">
-				</div>
-				<br/>
-				<div class="product-details text-left">
-					<p>
-						Your description here. Serenity is a highly-professional & modern website theme crafted with you, the user, in mind. This light-weight theme is generous, built with custom types and enough shortcodes to customize each page according to your project. You will notice some examples of pages in demo, but this theme can do much more.
+	<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
+		<form id="edd_checkout_cart_form" method="post">
+			<div id="edd_checkout_cart_wrap">
+				<table id="edd_checkout_cart" class="ajaxed">
+				<thead>
+				<tr class="edd_cart_header_row">
+					<th class="edd_cart_item_name">
+						 Item Name
+					</th>
+					<th class="edd_cart_item_price">
+						 Item Price
+					</th>
+					<th class="edd_cart_actions">
+						 Actions
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr class="edd_cart_item" id="edd_cart_item_0_25" data-download-id="25">
+					<td class="edd_cart_item_name">
+						<div class="edd_cart_item_image">
+							<img width="25" height="25" src="images/scorilo2-70x70.jpg" alt="">
+						</div>
+						<span class="edd_checkout_cart_item_title">Audio Item - Single License</span>
+					</td>
+					<td class="edd_cart_item_price">
+						 $11.99
+					</td>
+					<td class="edd_cart_actions">
+						<a class="edd_cart_remove_item_btn" href="#">Remove</a>
+					</td>
+				</tr>
+				</tbody>
+				<tfoot>
+				<tr class="edd_cart_footer_row">
+					<th colspan="5">
+						<a class="edd-cart-saving-button edd-submit button " id="edd-save-cart-button" href="#">Save Cart</a>
+					</th>
+				</tr>
+				<tr class="edd_cart_footer_row edd_cart_discount_row" style="display:none;">
+					<th colspan="5" class="edd_cart_discount">
+					</th>
+				</tr>
+				<tr class="edd_cart_footer_row">
+					<th colspan="5" class="edd_cart_total">
+						 Total: <span class="edd_cart_amount" data-subtotal="11.99" data-total="11.99">$11.99</span>
+					</th>
+				</tr>
+				</tfoot>
+				</table>
+			</div>
+		</form>
+		<div id="edd_checkout_form_wrap" class="edd_clearfix">
+			<form id="edd_purchase_form" class="edd_form" action="#" method="POST">
+				<fieldset id="edd_checkout_user_info">
+					<legend>Personal Info</legend>
+					<p id="edd-email-wrap">
+						<label class="edd-label" for="edd-email">
+						Email Address <span class="edd-required-indicator">*</span></label>
+						<input class="edd-input required" type="email" name="edd_email" placeholder="Email address" id="edd-email" value="">
 					</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<a href="#" class="btn btn-buynow">$49.00 - Purchase</a>
-			<div class="properties-box">
-				<ul class="unstyle">
-					<li><b class="propertyname">Version:</b> 1.0</li>
-					<li><b class="propertyname">Image Size:</b> 2340x1200</li>
-					<li><b class="propertyname">Files Included:</b> mp3, audio, jpeg, png</li>
-					<li><b class="propertyname">Documentation:</b> Well Documented</li>
-					<li><b class="propertyname">License:</b> GNU</li>
-					<li><b class="propertyname">Requires:</b> Easy Digital Downloads</li>
-					<li><b class="propertyname">Environment:</b> Wordpress</li>
-					<li><b class="propertyname">Any Field Etc:</b> Any Detail</li>
-					<li><b class="propertyname">Number:</b> Up to 20 specifications in this box</li>
-					<li><b class="propertyname">Live Demo:</b><a target="_blank" href="http://www.wowthemes.net/">http://www.wowthemes.net/</a></li>
-				</ul>
-			</div>
+					<p id="edd-first-name-wrap">
+						<label class="edd-label" for="edd-first">
+						First Name <span class="edd-required-indicator">*</span>
+						</label>
+						<input class="edd-input required" type="text" name="edd_first" placeholder="First name" id="edd-first" value="" required="">
+					</p>
+					<p id="edd-last-name-wrap">
+						<label class="edd-label" for="edd-last">
+						Last Name </label>
+						<input class="edd-input" type="text" name="edd_last" id="edd-last" placeholder="Last name" value="">
+					</p>
+				</fieldset>
+				<fieldset id="edd_purchase_submit">
+					<p id="edd_final_total_wrap">
+						<strong>Purchase Total:</strong>
+						<span class="edd_cart_amount" data-subtotal="11.99" data-total="11.99">$11.99</span>
+					</p>
+					<input type="hidden" name="edd_action" value="purchase">
+					<input type="hidden" name="edd-gateway" value="manual">
+					<input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="Purchase">
+				</fieldset>
+			</form>
 		</div>
 	</div>
 </div>
@@ -134,7 +187,7 @@
 	</div>
 </div>
 
-<!-- Load JS here for greater good =============================-->
+<!-- SCRIPTS =============================-->
 <script src="js/jquery-.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/anim.js"></script>
