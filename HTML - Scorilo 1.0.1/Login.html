@@ -71,19 +71,22 @@
 			<form id="edd_purchase_form" class="edd_form" action="#" method="POST">
 				<fieldset id="edd_checkout_user_info">
 					<legend>Sign IN</legend>
+
 					<p id="edd-email-wrap">
 						<label class="edd-label" for="edd-email">
 						Email Address <span class="edd-required-indicator">*</span></label>
 						<input class="edd-input required" type="email" name="edd_email" placeholder="Email address" id="edd-email" value="">
 					</p>
-					<p id="edd-first-name-wrap"></p>
-						<label class="edd-label" for="edd-first"></label>
+
+					<p id="edd-password"></p>
+						<label class="edd-label" for="edd-password">
 						Password <span class="edd-required-indicator">*</span>
 						</label>
-						<input class="edd-input required" type="password" name="edd_first" placeholder="Password" id="edd-first" value="" required="">
+						<input class="edd-input required" type="password" name="edd-password" placeholder="Password" id="edd-first" value="" required="">
 					</p>
-					<input type="hidden" name="edd_action" value="purchase">
-					<input type="hidden" name="edd-gateway" value="manual">
+
+					<!-- <input type="hidden" name="edd_action" value="purchase">
+					<input type="hidden" name="edd-gateway" value="manual"> -->
 					<input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="Sign IN">
 					<a href="Register.html" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" >Create account</a>
 				</fieldset>
