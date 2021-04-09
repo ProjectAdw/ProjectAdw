@@ -69,33 +69,55 @@
 			
 		</form>
 		<div id="edd_checkout_form_wrap" class="edd_clearfix">
-            
+
 			<form id="edd_purchase_form" class="edd_form" action="#" method="POST">
 				<fieldset id="edd_checkout_user_info">
 					<legend>Personal Info</legend>
-					<p id="edd-email-wrap">
-						<label class="edd-label" for="edd-email">
-						Email Address <span class="edd-required-indicator">*</span></label>
-						<input class="edd-input required" type="email" name="edd_email" placeholder="Email address" id="edd-email" value="">
-					</p>
-					<p id="edd-first-name-wrap">
-						<label class="edd-label" for="edd-first">
-						First Name <span class="edd-required-indicator">*</span>
-						</label>
-						<input class="edd-input required" type="text" name="edd_first" placeholder="First name" id="edd-first" value="" required="">
-					</p>
-					<p id="edd-last-name-wrap">
+					<!-- <p id="edd-last-name-wrap">
 						<label class="edd-label" for="edd-last">
 						Last Name </label>
 						<input class="edd-input" type="text" name="edd_last" id="edd-last" placeholder="Last name" value="">
 					</p>                 
 					<input type="hidden" name="edd_action" value="purchase">
-					<input type="hidden" name="edd-gateway" value="manual">
+					<input type="hidden" name="edd-gateway" value="manual"> -->
+
                 <form class="pure-form">
-                    <input type="password" placeholder="Password" id="password" required>
-                    <input type="password" placeholder="Confirm Password" id="confirm_password" required>
-					<input type="submit" class="pure-button pure-button-primary" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="submit">
+                    <fieldset id="edd_checkout_user_info">
+                        <p id="edd-email-wrap">
+                            <label class="edd-label" for="edd-email">
+                            Email Address <span class="edd-required-indicator">*</span></label>
+                            <input class="edd-input required" type="email" name="edd_email" placeholder="Email address" id="edd-email" value="">
+                        </p>
+
+                        <p id="edd-first-name-wrap">
+                            <label class="edd-label" for="edd-first">
+                            First Name <span class="edd-required-indicator">*</span>
+                            </label>
+                            <input class="edd-input required" type="text" name="edd_first" placeholder="First name" id="edd-first" value="" required="">
+                        </p>
+
+                        <p id="edd-last-name-wrap">
+                            <label class="edd-label" for="edd-last">
+                            Last Name <span class="edd-required-indicator">*</span>
+                            </label>
+                            <input class="edd-input" type="text" name="edd_last" id="edd-last" placeholder="Last name" value="">
+                        </p>  
+
+                        <label class="edd-label" for="edd-last">
+                            Password <span class="edd-required-indicator">*</span>
+                        </label>
+                        <input type="password" class="edd-input"  placeholder="Password" id="password" required>
+
+                        <label class="edd-label" for="edd-last">
+                            Confirm Password <span class="edd-required-indicator">*</span>
+                        </label>
+                        <input type="password" class="edd-input" placeholder="Confirm Password" id="confirm_password" required>
+                
+                        <button type="submit" class="edd-submit button">Confirm</button>
+                    </fieldset>
+                
                 </form>
+
                 </fieldset>
 				
 			</form>
@@ -123,6 +145,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/anim.js"></script>
 <script src="js/pure-form.js"></script>
+<script src="js/ConfirmPass.js"></script>
 
 </body>
 </html>
