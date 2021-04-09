@@ -63,35 +63,44 @@
 			</span>
 		</div>
 	</div>
-	<!-- Login =============================-->
+	<!-- Register =============================-->
 	<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
 		<form id="edd_checkout_cart_form" method="post">
+			
 		</form>
 		<div id="edd_checkout_form_wrap" class="edd_clearfix">
+            
 			<form id="edd_purchase_form" class="edd_form" action="#" method="POST">
 				<fieldset id="edd_checkout_user_info">
-					<legend>Sign IN</legend>
+					<legend>Personal Info</legend>
 					<p id="edd-email-wrap">
 						<label class="edd-label" for="edd-email">
 						Email Address <span class="edd-required-indicator">*</span></label>
 						<input class="edd-input required" type="email" name="edd_email" placeholder="Email address" id="edd-email" value="">
 					</p>
-					<p id="edd-first-name-wrap"></p>
-						<label class="edd-label" for="edd-first"></label>
-						Password <span class="edd-required-indicator">*</span>
+					<p id="edd-first-name-wrap">
+						<label class="edd-label" for="edd-first">
+						First Name <span class="edd-required-indicator">*</span>
 						</label>
-						<input class="edd-input required" type="password" name="edd_first" placeholder="Password" id="edd-first" value="" required="">
+						<input class="edd-input required" type="text" name="edd_first" placeholder="First name" id="edd-first" value="" required="">
 					</p>
+					<p id="edd-last-name-wrap">
+						<label class="edd-label" for="edd-last">
+						Last Name </label>
+						<input class="edd-input" type="text" name="edd_last" id="edd-last" placeholder="Last name" value="">
+					</p>                 
 					<input type="hidden" name="edd_action" value="purchase">
 					<input type="hidden" name="edd-gateway" value="manual">
-					<input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="Sign IN">
-					<a href="Register.html" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" >Create account</a>
-				</fieldset>
+                <form class="pure-form">
+                    <input type="password" placeholder="Password" id="password" required>
+                    <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+					<input type="submit" class="pure-button pure-button-primary" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="submit">
+                </form>
+                </fieldset>
+				
 			</form>
 		</div>
 	</div>
-	<!-- Register =============================-->
-
 </div>
 </section>
 
@@ -113,6 +122,7 @@
 <script src="js/jquery-.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/anim.js"></script>
+<script src="js/pure-form.js"></script>
 
 </body>
 </html>
