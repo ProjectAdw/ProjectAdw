@@ -17,6 +17,9 @@ def hello_world():
 #         return jsonify(data)
 #     return "200"
 
+@app.route("/index")
+def hello_():
+    return render_template("index.html")
 
 @app.route("/AdminEdit")
 def AdminEdit():
