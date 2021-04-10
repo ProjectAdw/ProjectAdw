@@ -18,10 +18,38 @@ def hello_world():
 #     return "200"
 
 
-# @app.route("/register")
-# def regiter():
-#     return render_template("Register.html")
+@app.route("/AdminEdit")
+def AdminEdit():
+    return render_template("AdminEdit.html")
 
+
+@app.route("/About")
+def About():
+    return render_template("About.html")
+    
+@app.route("/checkout")
+def checkout():
+    return render_template("checkout.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/Login")
+def Login():
+    return render_template("Login.html")
+
+@app.route("/product")
+def product():
+    return render_template("product.html")
+
+@app.route("/Register")
+def Register():
+    return render_template("Register.html")
+
+@app.route("/shop")
+def shop():
+    return render_template("shop.html")
 
 
 if __name__ == "__main__":
