@@ -8,8 +8,10 @@ db = client["Ass1"]  #ชิ่อของDatabase
 
 
 @app.route("/")
-def hello_world():
-    return render_template("index.html")
+def index():
+    emp_list = db.Car.find()
+    return render_template('index.html', emp_list = emp_list)
+
 
 @app.route("/Car", methods=['GET'])
 def get_allCar():
