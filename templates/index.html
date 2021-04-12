@@ -115,13 +115,14 @@
 						</div>
 						<span class="maxproduct"><img src="images/product1-1.jpg" alt=""></span>
 					</div>
+					{% for emp in emp_list %}
 					<div class="product-details">
 						<a href="#">
-						<h1>Calypso Theme</h1>
+						<h1>{{ emp['_name'] }}</h1>
 						</a>
 						<span class="price">
-						<span class="edd_price">$49.00</span>
-						</span>
+						<span class="edd_price">{{ emp['_price'] }}</span>
+						</span>{% endfor %}
 					</div>
 				</div>
 			</div>
