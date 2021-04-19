@@ -52,22 +52,22 @@ def contact():
 ########################################################################### LOGIN ###############################################################################################################
 @app.route("/Login")
 def Login():
-    if 'users' in session:
-        return 'You are logged in as ' + session['users']
+    if 'email' in session:
+        return 'You are logged in as ' + session['email']
     return render_template("Login.html")
 
 @app.route('/loginBackend', methods=['POST'])
 def loginBackend():
     char = db.customer
-    login_user = char.find_one({'edd_email' : request.form['email']})
+    login_user = char.find_one({'email' : request.form['email']})
     #hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
     if login_user:
-        if  bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt()):
+        if  bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt()):
             # bcrypt.hashpw(request.form['edd-password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
-            session['edd_email'] = request.form['email']
-            return redirect(url_for('register'))
+            #session['email'] = request.form['email']
+            return render_template('About.html')
 
-    return 'Invalid name/password combination'
+    return render_template('Login.html')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -77,8 +77,8 @@ def register():
         existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'username' : request.form['username'], 'pass' : hashpass})
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'username' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         
@@ -146,9 +146,9 @@ def action3 ():
 	_model=request.values.get("_model")
 	_price=request.values.get("_price")
 	id=request.values.get("_id")
-	couteeee = char.update({"_id":ObjectId(id)}, {'$set':{ "_name":_name, "_model":_model, "_price":_price}})
+	char.update({"_id":ObjectId(id)}, {'$set':{ "_name":_name, "_model":_model, "_price":_price}})
 
-	print(_name)
+	
     
 #ทำการ Deleted ข้อมูลตารางโดยการอิง name or _name
 @app.route('/deletecar')

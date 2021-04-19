@@ -66,34 +66,34 @@
 	</div>
 	<!-- Login =============================-->
 	<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
-		<form id="edd_checkout_cart_form" method="post">
-		</form>
-		<div id="edd_checkout_form_wrap" class="edd_clearfix">
-			<form id="edd_purchase_form" class="edd_form" action="/" method="POST">
+		
+		
+			<form  action="{{ url_for('loginBackend') }}" method="POST">
 				<fieldset id="edd_checkout_user_info">
 					<legend>Sign IN</legend>
 
-					<p id="edd-email-wrap">
-						<label class="edd-label" for="edd-email">
+					<p >
+						<label class="edd-label" >
 						Email Address <span class="edd-required-indicator">*</span></label>
-						<input class="edd-input required" type="email" name="edd_email" placeholder="Email address" id="edd-email" value="">
+						<input class="form-control" type="text" name="email" placeholder="Email address"  >
 					</p>
 
-					<p id="edd-password"></p>
-						<label class="edd-label" for="edd-password">
+					<p ></p>
+						<label class="edd-label" >
 						Password <span class="edd-required-indicator">*</span>
 						</label>
-						<input class="edd-input required" type="password" name="edd-password" placeholder="Password" id="edd-first" value="" required="">
+						<input class="form-control" type="password" name="password" placeholder="Inputpassword"  >
 					</p>
 
 					<!-- <input type="hidden" name="edd_action" value="purchase">
 					<input type="hidden" name="edd-gateway" value="manual"> -->
 					<!-- <input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="Sign IN"> -->
 					<button type="submit" class="edd-submit button">Log In</button>
+				</form>
 					<a href="/Register" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" >Create account</a>
 				</fieldset>
-			</form>
-		</div>
+			
+		
 	</div>
 	<!-- Register =============================-->
 
