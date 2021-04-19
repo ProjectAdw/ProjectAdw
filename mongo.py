@@ -2,7 +2,8 @@ from flask.helpers import url_for
 import pymongo
 import http.client
 import bson
-from flask import Flask,jsonify,render_template,request,redirect
+import bcrypt
+from flask import Flask,jsonify,render_template,request,redirect,session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -48,17 +49,52 @@ def checkout():
 def contact():
     return render_template("contact.html")
 
+########################################################################### LOGIN ###############################################################################################################
 @app.route("/Login")
 def Login():
+    if 'users' in session:
+        return 'You are logged in as ' + session['users']
     return render_template("Login.html")
+
+@app.route('/loginBackend', methods=['POST'])
+def loginBackend():
+    char = db.customer
+    login_user = char.find_one({'edd_email' : request.form['email']})
+    #hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+    if login_user:
+        if  bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt()):
+            # bcrypt.hashpw(request.form['edd-password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            session['edd_email'] = request.form['email']
+            return redirect(url_for('register'))
+
+    return 'Invalid name/password combination'
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    char = db.users
+    if request.method == 'POST':
+        users = char.db.users
+        existing_user = users.find_one({'username' : request.form['username']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'username' : request.form['username'], 'pass' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        
+        return 'That username already exists!'
+
+    return render_template('Register.html')
+
+###############################################################################################################################################################################################
 
 @app.route("/product")
 def product():
     return render_template("product.html")
 
-@app.route("/Register")
-def Register():
-    return render_template("Register.html")
+# @app.route("/Register")
+# def Register():
+#     return render_template("Register.html")
 
 @app.route("/shop")
 def shop():
