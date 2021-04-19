@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet"> 
+    {% include 'MainCSJS.html' %}
+</head>
+
+<body>
+
+    <!-- HEADER =============================-->
+    <header class="item header margin-top-0">
+        <div class="wrapper">
+            <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+                        <a href="/" class="navbar-brand brand"> ChaoCarMa </a>
+                    </div>
+                    <div id="navbar-collapse-02" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="propClone"><a href="/">Home</a></li>
+                            <li class="propClone"><a href="/shop">Shop</a></li>
+                            <li class="propClone"><a href="/product">Product</a></li>
+                            <li class="propClone"><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="text-pageheader">
+                            <div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.0s">
+                                Edit CAR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT =============================-->
+    
+    <section class="item content">
+        <div class="container toparea">
+            <div class="underlined-title">
+                <div class="editContent">
+                    <h1 class="text-center latestitems">Edit Data</h1>
+                </div>
+                <div class="wow-hr type_short"> 
+                  <a href="/AdminCar" type="button" class="btn btn-warning" aria-pressed="true">Add Car</a>
+                </div>
+               
+            </div>
+                <div class="row">
+                    
+                    {% for emp in emp_list %}
+                    <div class="col-md-4">
+                        <div class="productbox">
+                            <div class="fadeshop">
+                                <div class="product-details">
+                                        
+                                    {{ emp['_name'] }}
+                                    {{ emp['_model'] }}
+                                    {{ emp['_price'] }}
+                                    
+                                    <p>
+                                      <a href="./update?_id={{ emp['_id'] }}" data-toggle="modal"data-target="#modaledit{{_id}}"><button type="submit">Edit</button></a>
+                                      <a href="./deletecar?_name={{ emp['_name'] }}"onclick="return confirm('Are You Sure To Delete ?')"><button type="submit">Delete</button></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <form action="/action" method="POST">
+                      <table class="none">
+                        <tr>
+                          <td><b><big><label>Add a Task : </label></big></b></td>
+                        </tr>
+                        <tr>
+                        <td><input type="text" name="_name" placeholder="_name" /></td>
+                        <td><input type="text" name="_model" placeholder="_model" /></td>
+                        <td><input type="text" name="_price" placeholder="_price" /></td>
+                        <td><button type="submit"> Create </button></td>
+                        </tr>
+                      </form>     
+            
+            
+                      
+        
+                </div>
+        </div>
+    </section>
+
+
+    <!-- CALL TO ACTION =============================-->
+    <section class="content-block" style="background-color:#00bba7;">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
+                        <h1 class="callactiontitle"> Promote Items Area Give Discount to Buyers <span class="callactionbutton"><i class="fa fa-gift"></i> Promotion 20%</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER =============================-->
+
+
+    <!-- SCRIPTS =============================-->
+    <script src="js/jquery-.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/anim.js"></script>
+
+</body>
+
+</html>

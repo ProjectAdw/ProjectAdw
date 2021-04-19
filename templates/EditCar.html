@@ -1,0 +1,39 @@
+<html>    
+   <head>    
+            <title></title>    
+        </head>    
+        <style>       
+            h1{    
+                font-family:"Arial Black", Gadget, sans-serif;    
+            }    
+            body{    
+                background-color:white;    
+            }    
+        </style>    
+    <body>    
+        
+        <hr>    
+        <h3>Update tasks with a reference</h3>    
+        <form action="/action3" method="POST">    
+        {% for emp in emp_list %}    
+            Unique Object ID : {{ emp['_id'] }}<br/>    
+        <input type="text" name="_id" id="_id" hidden>    
+
+        <table>    
+        <tr>    
+        <td>emp Name</td><td> : </td><td><input type="text" name="_name" id="_name"></td>    
+        </tr>     
+        <tr>    
+        <td>Date</td><td> : </td><td><input type="text" name="_model" id="_model"></td>    
+        </tr>    
+        <tr>    
+        <td>Priority</td><td> : </td><td><input type="text" name="_price" id="_price"></td>    
+        </tr>    
+        </table>    
+        {% endfor %}    
+            <button type="submit"> Update emp </button>    
+            <br/>    
+        </form>    
+        <a href="/shop">Return to TaskList</a>    
+</body>    
+</html>   
