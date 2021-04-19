@@ -50,24 +50,24 @@ def contact():
     return render_template("contact.html")
 
 ########################################################################### LOGIN ###############################################################################################################
-@app.route("/Login")
-def Login():
-    if 'email' in session:
-        return 'You are logged in as ' + session['email']
-    return render_template("Login.html")
+@app.route("/login")
+def login():
+    if 'emailaa' in session:
+        return 'You are logged in as ' + session['emailaa']
+
+    return render_template('Login.html')
 
 @app.route('/loginBackend', methods=['POST'])
 def loginBackend():
-    char = db.customer
-    login_user = char.find_one({'email' : request.form['email']})
-    #hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-    if login_user:
-        if  bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt()):
-            # bcrypt.hashpw(request.form['edd-password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
-            #session['email'] = request.form['email']
-            return render_template('About.html')
+    users = db.customer
+    login_user = users.find_one({'email': request.form['email']})
 
-    return render_template('Login.html')
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt()):
+            #session['emailaa'] = request.form['email']
+            return redirect(url_for('About'))
+
+    return 'Invalid email or password'
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
