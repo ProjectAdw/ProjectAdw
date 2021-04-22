@@ -71,9 +71,9 @@ def loginBackend():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    char = db.users
+    char = db.customer
     if request.method == 'POST':
-        users = char.db.users
+        users = char
         existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
@@ -92,9 +92,9 @@ def register():
 def product():
     return render_template("product.html")
 
-# @app.route("/Register")
-# def Register():
-#     return render_template("Register.html")
+@app.route("/Register")
+def Register():
+    return render_template("Register.html")
 
 @app.route("/shop")
 def shop():
