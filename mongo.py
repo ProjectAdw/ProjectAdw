@@ -53,8 +53,8 @@ def contact():
 ########################################################################### LOGIN ###############################################################################################################
 @app.route("/login")
 def login():
-    if 'emailaa' in session:
-        return 'You are logged in as ' + session['emailaa']
+    if 'email' in session:
+        return 'You are logged in as ' + session['email']
 
     return render_template('Login.html')
 
@@ -66,7 +66,7 @@ def loginBackend():
     if login_user:
         if bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt()):
             session['email'] = request.form['email']
-            return redirect(url_for('About'))
+            return redirect(url_for('login'))
 
     return 'Invalid email or password'
 
