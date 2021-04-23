@@ -11,7 +11,8 @@ conn = http.client.HTTPSConnection("car-stockpile.p.rapidapi.com")
 app = Flask(__name__)
 client = pymongo.MongoClient("mongodb://admin:VIDgnh48123@node12713-project.app.ruk-com.cloud:11012") 
 db = client["project"] 
-
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
 
 @app.route("/") 
 def index(): 
@@ -63,8 +64,8 @@ def loginBackend():
     login_user = users.find_one({'email': request.form['email']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt()):
-            #session['emailaa'] = request.form['email']
+        if bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt()):
+            session['email'] = request.form['email']
             return redirect(url_for('About'))
 
     return 'Invalid email or password'
@@ -78,11 +79,12 @@ def register():
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'username' : request.form['username'], 'password' : hashpass})
+            emaila = request.form['email']
+            users.insert_one({'username' : request.form['username'], 'password' : hashpass , 'email':emaila})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         
-        return 'That username already exists!'
+        return render_template('index.html')
 
     return render_template('Register.html')
 
@@ -141,7 +143,7 @@ def update():
 
 @app.route("/action3", methods=['POST'])
 def action3 ():
-	char = db.Car
+	char = db.car
 	_name=request.values.get("_name")
 	_model=request.values.get("_model")
 	_price=request.values.get("_price")
@@ -153,7 +155,7 @@ def action3 ():
 #ทำการ Deleted ข้อมูลตารางโดยการอิง name or _name
 @app.route('/deletecar')
 def deletecar():
-    char = db.Car
+    char = db.car
     key = request.values.get("_name")
     char.remove({"_name": key})
     return redirect("/testupdate")
