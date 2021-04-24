@@ -64,7 +64,7 @@ def loginBackend():
     login_user = users.find_one({'email': request.form['email']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt()):
+        if request.form['password']:
             session['email'] = request.form['email']
             return redirect(url_for('login'))
 
@@ -78,7 +78,7 @@ def register():
         existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            hashpass = request.form['password']
             emaila = request.form['email']
             users.insert_one({'username' : request.form['username'], 'password' : hashpass , 'email':emaila})
             session['username'] = request.form['username']
