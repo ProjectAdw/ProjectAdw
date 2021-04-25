@@ -17,7 +17,10 @@ app.config['SESSION_TYPE'] = 'filesystem'
 @app.route("/") 
 def index(): 
     emp_list = db.car.find().limit(3)
-    return render_template('index.html', emp_list = emp_list)
+    if 'email' in session:
+        ses = 'You are logged in as ' + session['email']
+
+    return render_template('index.html', emp_list = emp_list , ses = ses)
 
 #///////////////////////////////////////////////////////////////////////////
 
@@ -61,12 +64,17 @@ def login():
 @app.route('/loginBackend', methods=['POST'])
 def loginBackend():
     users = db.customer
+    email = request.form.get("email")
+    password = request.form.get("password")
     login_user = users.find_one({'email': request.form['email']})
 
     if login_user:
-        if request.form['password']:
+        email_val = login_user['email']
+        passwordcheck = login_user['password']
+
+        if bcrypt.checkpw(password.encode('utf-8'),passwordcheck):
             session['email'] = request.form['email']
-            return redirect(url_for('login'))
+            return redirect(url_for('index'))
 
     return 'Invalid email or password'
 
@@ -88,6 +96,11 @@ def register():
 
     return render_template('Register.html')
 
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return redirect(url_for('login'))
 ###############################################################################################################################################################################################
 
 @app.route("/product")
