@@ -1,11 +1,11 @@
 from flask.helpers import url_for
 import pymongo
 import http.client
-import bson
 import bcrypt
 from flask import Flask,jsonify,render_template,request,redirect,session
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
+from bson.objectid import ObjectId 
+from bson import json_util
 
 conn = http.client.HTTPSConnection("car-stockpile.p.rapidapi.com")
 app = Flask(__name__)
@@ -23,6 +23,15 @@ def index():
     return render_template('index.html', emp_list = emp_list , ses = ses)
 
 #///////////////////////////////////////////////////////////////////////////
+
+@app.route("/Car", methods=['GET','POST','PUT'])
+def get_allCar():
+    char = db.car #เป็นเหมือนการนำค่าชื่อหัวตารางมาใส่ในตัวแปร char
+    output = []
+    for x in char.find(): #ทำตามฟังชั่น
+        output.append({'_id' : x['_id'],'_name' : x['_name'],'_model' : x['_model'],
+                        '_price' : x['_price']}) #เอาค่าในตารางมาอ่านแล้วใส่ไปใน output เป็นเหมือนค่าอาเร
+    return json_util.dumps(output) #หลังจากทำเงื่อนไขเสร็จส่งค่ากลับไปที่ output
 
 @app.route("/AdminEdit")
 def AdminEdit():
@@ -162,6 +171,7 @@ def action3 ():
 	_price=request.values.get("_price")
 	id=request.values.get("_id")
 	char.update({"_id":ObjectId(id)}, {'$set':{ "_name":_name, "_model":_model, "_price":_price}})
+    # return redirect("/")   
 
 	
     
@@ -172,6 +182,15 @@ def deletecar():
     key = request.values.get("_name")
     char.remove({"_name": key})
     return redirect("/testupdate")
+
+@app.route("/get_user", methods=["GET", "POST"])
+def get_user():
+    output = []
+    for post in db.find():
+        output.append(
+            {post["_id"], post["_name"], post["_model"], post["_price"]}
+        )
+    return json_util.dumps(output)
 #////////////////////////////////////////////////////////
 
 if __name__ == "__main__":

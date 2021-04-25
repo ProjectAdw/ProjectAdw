@@ -21,13 +21,13 @@
 
         <table>    
         <tr>    
-        <td>emp Name</td><td> : </td><td><input type="text" name="_name" id="_name"></td>    
+        <td>emp Name</td><td> : </td><td><input type="text" name="_name" id="_name" value="{{ emp['_name'] }}"></td>    
         </tr>     
         <tr>    
-        <td>Date</td><td> : </td><td><input type="text" name="_model" id="_model"></td>    
+        <td>Date</td><td> : </td><td><input type="text" name="_model" id="_model" value="{{ emp['_model'] }}"></td>    
         </tr>    
         <tr>    
-        <td>Priority</td><td> : </td><td><input type="text" name="_price" id="_price"></td>    
+        <td>Priority</td><td> : </td><td><input type="text" name="_price" id="_price" value="{{ emp['_price'] }}"></td>    
         </tr>    
         </table>    
         {% endfor %}    
