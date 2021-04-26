@@ -164,15 +164,14 @@ def update():
     return render_template('EditCar.html',emp_list = emp_list)
 
 @app.route("/action3", methods=['POST'])
-def action3 ():
-	char = db.car
-	_name=request.values.get("_name")
-	_model=request.values.get("_model")
-	_price=request.values.get("_price")
-	id=request.values.get("_id")
-	char.update({"_id":ObjectId(id)}, {'$set':{ "_name":_name, "_model":_model, "_price":_price}})
-    # return redirect("/")   
-
+def action3 ():     
+    char = db.car
+    _name=request.values.get("_name")    
+    _model=request.values.get("_model")    
+    _price=request.values.get("_price")       
+    id=request.values.get("_id")    
+    char.update_one({"_id":ObjectId(id)}, {'$set':{ "_name": _name, "_model":_model, "_price":_price}})    
+    return redirect("/shop")    
 	
     
 #ทำการ Deleted ข้อมูลตารางโดยการอิง name or _name
